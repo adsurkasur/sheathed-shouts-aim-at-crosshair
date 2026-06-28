@@ -1,7 +1,9 @@
 #include "Settings.h"
 
-#include <SimpleIni.h>
 #include <SKSE/SKSE.h>
+#include <SimpleIni.h>
+
+namespace logger = SKSE::log;
 
 namespace
 {

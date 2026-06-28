@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ── Dependencies ─────────────────────────────────────────────────────────────
 find_package(CommonLibSSE REQUIRED)
-find_package(unofficial-simpleini CONFIG REQUIRED)
+find_package(SimpleIni CONFIG REQUIRED)
 
 # ── Sources ──────────────────────────────────────────────────────────────────
 file(GLOB_RECURSE SOURCES
@@ -46,7 +46,13 @@ target_link_libraries(
     ${PROJECT_NAME}
     PRIVATE
         CommonLibSSE::CommonLibSSE
-        unofficial::simpleini::simpleini
+        SimpleIni::SimpleIni
+)
+
+target_precompile_headers(
+    ${PROJECT_NAME}
+    PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/PCH.h"
 )
 
 # ── Compiler options ─────────────────────────────────────────────────────────

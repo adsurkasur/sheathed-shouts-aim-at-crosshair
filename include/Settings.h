@@ -1,5 +1,13 @@
 #pragma once
 
+#include <string_view>
+
+namespace Plugin
+{
+    inline constexpr std::string_view NAME = "SheathedShoutsAimAtCrosshair";
+    inline constexpr std::string_view VERSION = "1.0.0";
+}
+
 /// @brief Singleton that holds all user-configurable settings loaded from the INI file.
 struct Settings
 {

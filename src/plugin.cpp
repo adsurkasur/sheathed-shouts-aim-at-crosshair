@@ -5,6 +5,8 @@
 
 #include <cmath>
 
+namespace logger = SKSE::log;
+
 // ─────────────────────────────────────────────────────────────────────────────
 //  ShoutAimHandler
 //
@@ -65,7 +67,7 @@ public:
         }
 
         // ── Check weapon state ───────────────────────────────────────
-        if (settings->onlyWhenWeaponsSheathed && player->IsWeaponDrawn()) {
+        if (settings->onlyWhenWeaponsSheathed && player->AsActorState()->IsWeaponDrawn()) {
             if (settings->debugLogging) {
                 logger::debug("[ShoutAim] Shout detected but weapons are drawn — skipping.");
             }
@@ -223,30 +225,24 @@ static void MessageCallback(SKSE::MessagingInterface::Message* a_msg)
 //  SKSE plugin entry point
 // ─────────────────────────────────────────────────────────────────────────────
 
-/// Called by SKSE to query plugin info.  CommonLibSSE-NG handles this
-/// automatically via add_commonlibsse_plugin, but we declare it for
-/// explicit version info if needed.
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
     SKSE::Init(a_skse);
 
     // ── Logging ──────────────────────────────────────────────────────
-    auto* log = SKSE::log::get();
-    if (log) {
-        log->set_level(spdlog::level::info);
-        log->flush_on(spdlog::level::info);
-    }
+    spdlog::set_level(spdlog::level::info);
+    spdlog::flush_on(spdlog::level::info);
 
-    logger::info("{} v{} loaded", Plugin::NAME, Plugin::VERSION.string());
+    logger::info("{} v{} loaded", Plugin::NAME, Plugin::VERSION);
     logger::info("Runtime: {}", REL::Module::get().version().string());
 
     // ── Settings ─────────────────────────────────────────────────────
     Settings::GetSingleton()->Load();
 
     // After loading settings, adjust log level if debug logging is enabled
-    if (Settings::GetSingleton()->debugLogging && log) {
-        log->set_level(spdlog::level::debug);
-        log->flush_on(spdlog::level::debug);
+    if (Settings::GetSingleton()->debugLogging) {
+        spdlog::set_level(spdlog::level::debug);
+        spdlog::flush_on(spdlog::level::debug);
         logger::debug("[ShoutAim] Debug logging enabled.");
     }
 
