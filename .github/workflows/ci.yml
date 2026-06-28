@@ -1,0 +1,56 @@
+name: CI/CD & Release
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build SKSE Plugin (Windows)
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup vcpkg Environment
+        run: |
+          echo "VCPKG_ROOT=C:\vcpkg" >> $env:GITHUB_ENV
+
+      - name: Configure CMake
+        run: cmake --preset default
+
+      - name: Build Release
+        run: cmake --build --preset release
+
+      - name: Package Installable Mod Zip
+        run: |
+          Compress-Archive -Path dist\SKSE -DestinationPath SheathedShoutsAimAtCrosshair.zip -Force
+
+      - name: Upload Mod Zip Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SheathedShoutsAimAtCrosshair-Mod-Zip
+          path: SheathedShoutsAimAtCrosshair.zip
+
+      - name: Upload Unpacked Dist Folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: SheathedShoutsAimAtCrosshair-dist
+          path: dist/
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            SheathedShoutsAimAtCrosshair.zip
+          generate_release_notes: true

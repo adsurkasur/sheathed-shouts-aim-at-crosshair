@@ -1,0 +1,32 @@
+[size=4][b]Description[/b][/size]
+[size=3][color=#D4D4D8]In vanilla Skyrim, activating a shout while your weapons are sheathed fires the shout along your character's current body angle rather than where you are actually looking. This makes third-person gameplay feel clunky and disconnected.
+
+[b]Sheathed Shouts Aim at Crosshair[/b] fixes this by automatically rotating your character to face your camera and crosshair direction the moment you activate any shout while weapons are sheathed. It makes shouting feel smooth, responsive, and consistent with modern third-person action games.[/color][/size]
+
+[size=4][b]Installation instructions[/b][/size]
+[size=3][color=#D4D4D8][list]
+[*] Install [b]Address Library for SKSE Plugins[/b] and [b]SKSE64[/b] (1.6.1170).
+[*] Download this mod via [b]Mod Organizer 2[/b] or [b]Vortex[/b] and enable it.
+[*] (Manual Install) Extract the zip archive directly into your Skyrim Special Edition [font=Courier New]Data/[/font] folder.
+[/list][/color][/size]
+
+[size=4][b]Main features[/b][/size]
+[size=3][color=#D4D4D8][list]
+[*] [b]Crosshair Aiming:[/b] Automatically aligns sheathed shouts with your crosshair/camera yaw.
+[*] [b]Non-Intrusive:[/b] Pure event-driven engine hook. Does not alter shout damage, cooldowns, or edit any game records.
+[*] [b]Highly Configurable:[/b] Includes an INI configuration file ([font=Courier New]SheathedShoutsAimAtCrosshair.ini[/font]) to toggle aiming correction or debug logging on the fly.
+[*] [b]Version Independent:[/b] Built with CommonLibSSE-NG and Address Library for maximum compatibility on Skyrim Anniversary Edition 1.6.1170.
+[/list][/color][/size]
+
+[size=4][b]Requirements[/b][/size]
+[size=3][color=#D4D4D8][list]
+[*] [b]Skyrim Special Edition / Anniversary Edition[/b] (Steam 1.6.1170)
+[*] [url=https://skse.silverlock.org/]SKSE64[/url] (compatible with 1.6.1170)
+[*] [url=https://www.nexusmods.com/skyrimspecialedition/mods/32444]Address Library for SKSE Plugins[/url]
+[/list][/color][/size]
+
+[size=4][b]Shout outs[/b][/size]
+[size=3][color=#D4D4D8][list]
+[*] The SKSE and CommonLibSSE-NG development teams for their incredible tools and reverse engineering.
+[*] The Skyrim modding community for ongoing feedback and inspiration.
+[/list][/color][/size]
