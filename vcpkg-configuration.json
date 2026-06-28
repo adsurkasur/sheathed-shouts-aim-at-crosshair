@@ -1,0 +1,16 @@
+{
+  "default-registry": {
+    "kind": "builtin",
+    "baseline": "2024.09.30"
+  },
+  "registries": [
+    {
+      "kind": "git",
+      "repository": "https://github.com/Exit-9B/CommonLibSSE-NG-vcpkg",
+      "baseline": "main",
+      "packages": [
+        "commonlibsse-ng"
+      ]
+    }
+  ]
+}

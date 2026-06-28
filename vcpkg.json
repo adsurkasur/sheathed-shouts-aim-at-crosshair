@@ -1,0 +1,10 @@
+{
+  "name": "sheathed-shouts-aim-at-crosshair",
+  "version-string": "1.0.0",
+  "description": "SKSE plugin: Sheathed shouts aim toward the camera/crosshair direction",
+  "license": "MIT",
+  "dependencies": [
+    "commonlibsse-ng",
+    "simpleini"
+  ]
+}

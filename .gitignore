@@ -1,0 +1,21 @@
+# Build output
+build/
+dist/
+out/
+cmake-build-*/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln
+*.vcxproj*
+
+# vcpkg
+vcpkg_installed/
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
